@@ -28,6 +28,14 @@ API Course, Lesson 1 -->
        map: map,
        title: 'First point'
       });
+      
+      var infowindow = new google.maps.InfoWindow({
+       content: 'Some info content.'
+      });
+      
+      marker.addListener('click', function(){
+       infowindow.open(map, marker);
+      });
      }
    </script>
    <!--TODO: Load the JS API ASYNCHRONOUSLY below.-->
