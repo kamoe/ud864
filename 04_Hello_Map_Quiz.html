@@ -45,12 +45,12 @@ API Course, Lesson 1 -->
       var bounds = new google.maps.LatLngBounds();
       
       for (var i=0; i< locations.length; i++){
-       console.log('Building point for'+label);
+        console.log(Building point);
         var point = locations[i].location;
         var label = locations[i].title;
         
         var marker = new google.maps.Marker({
-         console.log('Putting marker for'+label);
+         console.log(Putting marker);
           map: map,
           position: point,
           title: label,
@@ -62,7 +62,7 @@ API Course, Lesson 1 -->
         bounds.extend(marker,point);
         marker.addListener('click', function(){
            populateInfowindow(this, largeInfowindow);
-         console.log('populated infowindow for'+label);
+           console.log(populated infowindow);
         });
       }
       map.fitBounds(bounds);
