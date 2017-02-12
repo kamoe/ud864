@@ -56,7 +56,7 @@ API Course, Lesson 1 -->
           id: i
         });
         markers.push(marker);
-        bounds.extend(marker,position);
+        bounds.extend(marker,point);
         marker.addListener('click', function(){
            populateInfowindow(this, largeInfowindow);
         });
