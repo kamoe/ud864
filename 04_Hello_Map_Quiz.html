@@ -20,12 +20,12 @@ API Course, Lesson 1 -->
        // TODO: use a constructor to create a new map JS object. You can use the coordinates
        // we used, 40.7413549, -73.99802439999996 or your own!
       map = new google.maps.Map(document.getElementById('map'), {
-       center: {lat: 0, lng: 0},
+       center: {lat:51, lng: 0},
        zoom: 5
       });
       /*var point = {lat: 51, lng: 0};*/
       var locations = [
-        {title: 'Meaningful information', location: {lat: 40.7413549, lng: 0}},
+        {title: 'Meaningful information', location: {lat: 40.7413549, lng: 0}}
        /* {title: 'Meaningful information', location: {lat: 40.7413549, lng: -73.99802439999996}},
         {title: 'Meaningful information', location: {lat: 0, lng: -73.99802439999996}},
         {title: 'Meaningful information', location: {lat: 0, lng: 0}},
@@ -48,13 +48,13 @@ API Course, Lesson 1 -->
       var bounds = new google.maps.LatLngBounds();
       
       for (var i=0; i< locations.length; i++){
-        var position = locations[i].location;
-        var title = locations[i].title;
+        var point = locations[i].location;
+        var label = locations[i].title;
         
         var marker = new google.maps.Marker({
           map: map,
-          position: position,
-          title: title,
+          position: point,
+          title: label,
           animation:google.maps.Animation.DROP, 
           id: i
         });
