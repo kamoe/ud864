@@ -39,11 +39,8 @@ API Course, Lesson 1 -->
        map: map,
        title: 'First point'
       });
-      
-      var infowindow = new google.maps.InfoWindow({
-       content: 'Some info content.'
-      });*/
-      
+      */
+      var infowindow = new google.maps.InfoWindow();      
       var largeInfowindow = new google.maps.InfoWindow();
       var bounds = new google.maps.LatLngBounds();
       
@@ -55,7 +52,7 @@ API Course, Lesson 1 -->
           map: map,
           position: point,
           title: label,
-          animation:google.maps.Animation.DROP, 
+          /*animation:google.maps.Animation.DROP, */
           id: i
         });
         markers.push(marker);
