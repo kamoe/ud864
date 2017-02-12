@@ -14,16 +14,27 @@ API Course, Lesson 1 -->
    <script>
      // TODO: Create a map variable
     var map;
+    var markers[];
      // TODO: Complete the following function to initialize the map
-     function initMap() {
+    function initMap() {
        // TODO: use a constructor to create a new map JS object. You can use the coordinates
        // we used, 40.7413549, -73.99802439999996 or your own!
-      map = new google.maps.Map(document.getElementById('map'), {
+     /* map = new google.maps.Map(document.getElementById('map'), {
        center: {lat: 51, lng: 0},
        zoom: 13
       });
-      var point = {lat: 51, lng: 0};
-      var marker = new google.maps.Marker({
+      var point = {lat: 51, lng: 0};*/
+      var locations = [
+        {title: 'Meaningful information', location: {lat: 0, lng: 0}},
+        {title: 'Meaningful information', location: {lat: 0, lng: 50}},
+        {title: 'Meaningful information', location: {lat: 0, lng: 100}},
+        {title: 'Meaningful information', location: {lat: 50, lng: 0}},
+        {title: 'Meaningful information', location: {lat: 50, lng: 50}},
+        {title: 'Meaningful information', location: {lat: 100, lng: 0}},
+        {title: 'Meaningful information', location: {lat: 100, lng: 100}}
+      ];
+      
+     /* var marker = new google.maps.Marker({
        position: point,
        map: map,
        title: 'First point'
@@ -31,12 +42,41 @@ API Course, Lesson 1 -->
       
       var infowindow = new google.maps.InfoWindow({
        content: 'Some info content.'
-      });
+      });*/
       
-      marker.addListener('click', function(){
+      var largeInfowindow = new google.maps.InfoWindow();
+      var bounds = new google.maps.LatLngBounds();
+      
+      for (var i=0; i< locations.length; i++){
+        var position = locations[i].location;
+        var title = locations[i].title;
+        
+        var marker = new google.maps.Marker({
+          map: map,
+          position: point,
+          title: title,
+          animation:google.maps.Animaion.DROP, 
+          id: i
+        });
+        markers.push(marker);
+        bounds.extend(marker,position);
+        marker.addListener('click', function(){
+           populateInfowindow(this, largeInfowindow);
+        });
+      }
+      map.fitBounds(bounds);
+   }
+   
+   function populateInfowindow(marker, infowindow){
+     if (infowindow.marker != marker){
+       infowindow.marker = marker;
+       infowindow.setContent('<div>'+marker.title'</div>');
        infowindow.open(map, marker);
-      });
+       infowindow.addListener('closeclick', function(){
+         infowindow.setMarker(null);
+       });
      }
+   }
    </script>
    <!--TODO: Load the JS API ASYNCHRONOUSLY below.-->
    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo7LT8kaYyEHaKW3VucMpO32DTOhDdddE&v=3&callback=initMap">
