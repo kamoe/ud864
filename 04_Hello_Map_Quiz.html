@@ -68,12 +68,17 @@ API Course, Lesson 1 -->
    }
    
    function populateInfowindow(marker, infowindow){
+     console.log("will begin to populat infowindow");
      if (infowindow.marker != marker){
+       console.log("marker is not marker");
        infowindow.marker = marker;
+       console.log("marker is now marker");
        infowindow.setContent('<div>'+marker.title+'</div>');
+       console.log("content is now "+marker.title);
        infowindow.open(map, marker);
        infowindow.addListener('closeclick', function(){
          infowindow.setMarker(null);
+         console.log("marker is null");
        });
      }
    }
